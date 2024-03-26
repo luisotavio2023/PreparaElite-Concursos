@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <title>Title</title>
     <!-- Required meta tags -->
@@ -25,7 +25,7 @@
         text-align: left;
     }
     .footer-links a {
-        display: block;
+        display: flex;
         color: #fff;
         text-decoration: none;
         margin-bottom: 5px;
@@ -36,6 +36,8 @@
     .contact-info p {
         margin-bottom: 5px;
     }
+
+    
     </style>
   </head>
   <body>
@@ -71,38 +73,59 @@
 </div>
 </div>
 </nav>
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
-    </div>
-  </div>
+
+<div class="d-flex justify-content-center mt-3">
+    <h2>Trabalhe Conosco</h2>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 footer-links">
-                <h5>Links Úteis</h5>
-                <a href="trabalheconosco.php">Trabalhe Conosco</a>
-                <a href="#">SAC</a>
-                <a href="#">Dúvidas</a>
-                <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm">Código de Defesa do Consumidor</a>
-            </div>
-            <div class="col-md-6 contact-info">
-                <h5>Contato</h5>
-                <p>Email: exemplo@email.com</p>
-                <p>Telefone:<a href="https://wa.me/seunumerodetelefone"> (XX) XXXX-XXXX</a></p>
-                <p>Endereço: Av. Exemplo, 1234, Cidade, Estado</p>
-            </div>
-        </div>
+<div class="container mt-4 col-sm-4">
+  <form action="">
+    <div class="form-group">
+      <label for="name">Seu nome:</label>
+      <input type="text" class="form-control" id="name" name="name">
     </div>
+    <div class="form-group">
+      <label for="email">Seu email:</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="birthdate">Data de nascimento:</label>
+      <input type="date" class="form-control" id="birthdate" name="birthdate">
+    </div>
+    <div class="form-group">
+      <label for="position">Cargo que deseja trabalhar:</label>
+      <select class="form-control" id="position" name="position">
+        <option value="professor">Professor</option>
+        <option value="estagiario" selected>Estagiário</option>
+        <option value="auxiliar_professor">Auxiliar de Professor</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="resume">Seu currículo:</label>
+      <input type="file" class="form-control-file" id="resume" name="resume">
+    </div>
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
+</div>
+
+<footer class="footer" style="margin-top: 100px;"> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 footer-links">
+        <h5>Links Úteis</h5>
+        <a href="">Trabalhe Conosco</a>
+        <a href="#">SAC</a>
+        <a href="#">Dúvidas</a>
+        <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm">Código de Defesa do Consumidor</a>
+      </div>
+      <div class="col-md-6 contact-info">
+        <h5>Contato</h5>
+        <p>Email: exemplo@email.com</p>
+        <p>Telefone:<a href="https://wa.me/seunumerodetelefone"> (XX) XXXX-XXXX</a></p>
+        <p>Endereço: Av. Exemplo, 1234, Cidade, Estado</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
       
