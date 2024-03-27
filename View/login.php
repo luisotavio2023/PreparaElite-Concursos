@@ -69,6 +69,39 @@
   </head>
   <body>
 
+  <nav class="navbar navbar-expand-lg" style="background-color: #004aad;">
+  <a class="navbar-brand" href="#" style="color: white;">PreparaElite Concursos</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <div class="navbar">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Perfil
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Gerenciar Perfil</a>
+        <a class="dropdown-item" href="#">Carrinho</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Sair/logout</a>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
+</nav>
+
   
   <div class="container login-container">
         <div class="logo">
