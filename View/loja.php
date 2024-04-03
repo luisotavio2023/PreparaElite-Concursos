@@ -90,6 +90,25 @@
 </div>
 
 
+<div class="container">
+        <div class="row justify-content-center">
+            <?php foreach ($produtos as $produto): ?>
+                <div class="col-lg-4 col-md-6 col-sm-12 product-card">
+                    <div class="card">
+                        <img src="imagens/<?php echo $produto['imagem']; ?>" class="card-img-top" alt="<?php echo $produto['nome']; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
+                            <p class="card-text"><?php echo $produto['descricao']; ?></p>
+                            <p class="card-text">Quantidade disponível: <?php echo $produto['quantidade_disponivel']; ?></p>
+                            <p class="card-text">R$ <?php echo number_format($produto['valor'], 2, ',', '.'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+
   <footer class="footer">
     <div class="container">
         <div class="row">

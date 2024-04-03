@@ -4,8 +4,8 @@ require "BancodeDados.php";
 
  Class Produto{
 
-    private string $nome; 
-    private string $tipo;
+    private $imagem;
+    private string $nome;
     private string $descricao;
     private string $valor;
     private int $quantidadeprod;
