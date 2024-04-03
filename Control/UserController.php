@@ -20,7 +20,7 @@
             $nacionalidade = $_POST['nacionalidade'];
             
             // Chama a função para cadastrar o usuário
-            $resultado = cadastrarUsuario($conexao, $nome, $email, $senha, $cpf, $dataNascimento, $descricao, $nacionalidade);
+            $resultado = cadastrarUsuario($conn, $nome, $email, $senha, $cpf, $dataNascimento, $descricao, $nacionalidade);
             
             // Verifica se o cadastro foi bem-sucedido
             if (is_numeric($resultado)) {
