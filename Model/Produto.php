@@ -1,5 +1,7 @@
 <?php
 
+require "BancodeDados.php";
+
  Class Produto{
 
     private string $nome; 

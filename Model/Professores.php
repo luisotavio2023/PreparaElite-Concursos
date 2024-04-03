@@ -1,18 +1,18 @@
 <?php
 
- class Professores{
+require "BancodeDados.php";
+require_once('Usuarios.php');
+
+ class Professores extends Usuários{
 
     //Atributos
-    private string $nome;
-    private string $nacionalidade;
     private string $formacao;
     private float $salario;
     
 
      // Construtor da classe
-     public function __construct($Nome, $Nacionalidade, $Formacao, $Salario) {
-        $this->nome = $Nome;
-        $this->nacionalidade = $Nacionalidade;
+     public function __construct( $Formacao, $Salario) {
+        parent::__construct($id, $nome, $email, $nacionalidade, $cpf);
         $this->formacao = $Formacao;
         $this->salario = $Salario;
     }
