@@ -131,7 +131,7 @@
         </div>
     </div>
 
-    <p class="copyright">&copy; 2024 ConcurseiroElite Pro - Todos os direitos reservados</p>
+    <p class="copyright">&copy; 2024 PreparaElite Pro - Todos os direitos reservados</p>
 
   
       

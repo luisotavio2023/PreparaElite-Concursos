@@ -79,7 +79,7 @@
 </div>
 
 <div class="container mt-4 col-sm-4">
-  <form action="">
+  <form action="../Control/UserController.php">
     <div class="form-group">
       <label for="name">Seu nome:</label>
       <input type="text" class="form-control" id="name" name="name">
@@ -89,14 +89,12 @@
       <input type="email" class="form-control" id="email" name="email">
     </div>
     <div class="form-group">
-      <label for="birthdate">Data de nascimento:</label>
-      <input type="date" class="form-control" id="birthdate" name="birthdate">
-    </div>
-    <div class="form-group">
       <label for="position">Cargo que deseja trabalhar:</label>
       <select class="form-control" id="position" name="position">
+        <option value="Selecione" selected>Selecione</option>
         <option value="professor">Professor</option>
-        <option value="estagiario" selected>Estagiário</option>
+        <option value="estagiario">Estagiário</option>
+        <option value="Técnico em T.I"></option>
         <option value="auxiliar_professor">Auxiliar de Professor</option>
       </select>
     </div>

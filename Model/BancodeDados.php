@@ -1,11 +1,11 @@
 <?php
 
 class ConexaoBancoDados {
-    private $servername = "";
-    private $username = "";
+    private $servername = "localhost";
+    private $username = "root";
     private $password = "";
-    private $dbname = "";
-    private $conn = "";
+    private $dbname = "preparaelite";
+    private $conn;
 
     // Construtor da classe
     public function __construct($servername, $username, $password, $dbname) {
@@ -31,6 +31,8 @@ class ConexaoBancoDados {
     public function fecharConexao() {
         $this->conn->close();
     }
+
+    
 }
 
 
