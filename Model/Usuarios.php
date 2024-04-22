@@ -25,8 +25,58 @@
         $this->cpf = $CPF;
         $this->tipous = $TipoUs;
         $this->nacionalidade = $Nacionalidade;
-        $this->formacao = $Formacao;
         $this->dataNascimento = $dataNascimento;
+    }
+
+    public function getId(){
+      return $this->id;
+    }
+
+    public function setId($id){
+
+    }
+
+    public function getEmail(){
+      return $this->email;
+    }
+
+    public function setEmail($email){
+      $this->email = $email;
+    }
+    public function getSenha(){
+      return $this->senha;
+    }
+    public function setSenha($senha){
+      $this->senha = $senha;
+    }
+
+    public function getNome(){
+      return $this->nome;
+    }
+    public function setNome($nome){
+      $this->nome = $nome;
+    }
+    public function getCPF(){
+      return $this->cpf;
+    }
+    public function setCPF($cpf){
+      $this->cpf = $cpf;
+    }
+
+    public function getTipoUs(){
+      return $this->tipous;
+    }
+    public function setTipoUs($tipous){
+      $this->tipous = $tipous;
+    }
+    public function getNacionalidade(){
+      return $this->nacionalidade;
+    }
+    public function setNacionalidade($nacionalidade){
+      $this->nacionalidade = $nacionalidade;
+    }
+    public function getDataNascimento(){
+      return $this->dataNascimento;
     }
 }
 ?>

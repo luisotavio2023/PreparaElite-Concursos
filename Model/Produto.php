@@ -5,6 +5,7 @@ require "BancodeDados.php";
  Class Produto{
 
     private $imagem;
+    private string $tipo;
     private string $nome;
     private string $descricao;
     private string $valor;
@@ -19,6 +20,24 @@ require "BancodeDados.php";
         $this->valor = $Valor;
         $this->quantidadeprod = $Quantidadeprod;
     }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function setNome($nome){
+        $this->nome = $nome;
+    }
+
+    public function getTipo() {
+        return $this->tipo;
+    }
+
+    public function setTipo($tipo){
+        $this->tipo = $tipo;
+    }
+
+    
 
     public static function getAll() {
         $conn = require('../config/database.php');
