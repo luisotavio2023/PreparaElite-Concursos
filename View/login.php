@@ -75,43 +75,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <div class="navbar">
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Perfil
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Gerenciar Perfil</a>
-        <a class="dropdown-item" href="#">Carrinho</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Sair/logout</a>
-      </div>
-    </li>
-  </ul>
-</div>
 </div>
 </nav>
 
   
   <div class="container login-container">
         <div class="logo">
-            <img src="logo_concurseiroelite_pro.png" alt="ConcurseiroElite Pro">
+            <img src="../images/BrasaoPreparaSF.png" alt="ConcurseiroElite Pro">
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-form-header">
-                    <h2>Bem-vindo ao ConcurseiroElite Pro</h2>
-                    <p>Faça login para acessar seus cursos</p>
+                    <h2>Bem-vindo ao PreparaElite Concursos</h2>
+                    <small>Faça login para acessar seus cursos</small>
                 </div>
                 <form>
                     <div class="form-group">
