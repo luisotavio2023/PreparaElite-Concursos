@@ -1,58 +1,33 @@
 <?php
+class Produto {
+    public $nome;
+    public $preco;
+    public $tipo;
 
-require "BancodeDados.php";
-
- Class Produto{
-
-    private $imagem;
-    private string $tipo;
-    private string $nome;
-    private string $descricao;
-    private string $valor;
-    private int $quantidadeprod;
-
-    
-    // Construtor da classe
-    public function __construct($Nome, $Tipo, $Descricao, $Valor, $Quantidadeprod) {
-        $this->nome = $Nome;
-        $this->tipo = $Tipo;
-        $this->descricao = $Descricao;
-        $this->valor = $Valor;
-        $this->quantidadeprod = $Quantidadeprod;
-    }
-
-    public function getNome() {
-        return $this->nome;
-    }
-
-    public function setNome($nome){
+    public function __construct($nome, $preco, $tipo) {
         $this->nome = $nome;
-    }
-
-    public function getTipo() {
-        return $this->tipo;
-    }
-
-    public function setTipo($tipo){
+        $this->preco = $preco;
         $this->tipo = $tipo;
     }
 
-    
-
-    public static function getAll() {
-        $conn = require('../config/database.php');
-        $sql = "SELECT nome, descricao, quantidade_disponivel, valor, imagem FROM produtos";
-        $resultado = $conexao->query($sql);
-        $produtos = [];
-        if ($resultado->num_rows > 0) {
-            while ($produto = $resultado->fetch_assoc()) {
-                $produtos[] = $produto;
-            }
-        }
-        $conexao->close();
-        return $produtos;
+    public function descricao() {
+        return "$this->nome - R$".number_format($this->preco, 2);
     }
- }
 
+    public static function factory($tipo, $nome, $preco) {
+        switch($tipo) {
+            case "Camisas":
+                return new Camisas($nome, $preco);
+            case "Cadernos":
+                return new Cadernos($nome, $preco);
+            case "Apostilas":
+                return new Apostilas($nome, $preco);
+            case "Acessórios":
+                return new Acessorios($nome, $preco);
+            default:
+                throw new Exception("Tipo de produto desconhecido: $tipo");
+        }
+    }
+}
 
 ?>
