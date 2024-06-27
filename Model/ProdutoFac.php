@@ -11,6 +11,8 @@ class ProdutoFactory {
                 return new Apostilas($nome, $tipo, $descricao, $valor, $quantidadeprod);
             case 'Acessorios':
                 return new Acessorios($nome, $tipo, $descricao, $valor, $quantidadeprod);
+                case 'Cursos':
+                    return new Cursos($nome, $tipo, $descricao, $valor, $disponibilidade);
             default:
                 throw new Exception("Tipo de produto desconhecido: $tipo");
         }

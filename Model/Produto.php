@@ -3,11 +3,13 @@ class Produto {
     public $nome;
     public $preco;
     public $tipo;
+    public $disponibilidade;
 
-    public function __construct($nome, $preco, $tipo) {
+    public function __construct($nome, $preco, $tipo, $disponibilidade) {
         $this->nome = $nome;
         $this->preco = $preco;
         $this->tipo = $tipo;
+        $this->disponibilidade = $disponibilidade;
     }
 
     public function descricao() {
