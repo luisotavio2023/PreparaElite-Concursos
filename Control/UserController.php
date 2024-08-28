@@ -1,6 +1,6 @@
 <?php
 
- require "../Model/BancodeDados.php";
+ require_once "../Model/BancodeDados.php";
 
  class UserController{
     private $usercontroller;
@@ -55,6 +55,38 @@
                 }
             }
         }
+        public function CadastroUsuario() {
+            // Verificar se o formulário foi submetido
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Armazenar os dados do formulário em variáveis
+                $nome = $_POST["nome"];
+                $email = $_POST["email"];
+                $senha = $_POST["senha"];
+                $cpf = $_POST["cpf"];
+                $tipous = $_POST["tipous"];
+                $nacionalidade = $_POST["nacionalidade"];
+                $dataNascimento = $_POST["dataNascimento"];
+                
+                // Criar uma instância da classe Usuarios
+                $usuario = new Usuarios(null, $email, $senha, $nome, $cpf, $tipous, $nacionalidade, $dataNascimento);
+                
+                try {
+                    // Inserir o usuário no banco de dados
+                    if ($usuario->registrar()) {
+                        // Redirecionar para login.php após o registro bem-sucedido
+                        header("Location: login.php");
+                        exit(); // Certifica que o script para aqui
+                    } else {
+                        // Exibir mensagem de erro se o registro falhar
+                        echo "<div class='alert alert-danger' role='alert' style='position:fixed; bottom:0; right:0; z-index:1000;'>Erro ao cadastrar usuário.</div>";
+                    }
+                } catch (Exception $e) {
+                    // Captura e exibe qualquer exceção que possa ocorrer
+                    echo "<div class='alert alert-danger' role='alert' style='position:fixed; bottom:0; right:0; z-index:1000;'>Erro: " . htmlspecialchars($e->getMessage()) . "</div>";
+                }
+            }
+        }
+        
 
     
     }

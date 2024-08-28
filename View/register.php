@@ -49,10 +49,10 @@
         <div class="col-md-6">
           <div class="bg-white p-4 rounded shadow-sm mb-4">
             <div class="text-center mb-4">
-              <h2>Bem-vindo ao ConcurseiroElite Pro</h2>
+              <h2>Bem-vindo ao PreparaElite Concursos</h2>
               <p>Faça seu registro e seja bem vindo(a)!</p>
             </div>
-            <form method="post" action="../model/Usuários.php">
+            <form method="post" action="../Control/UserController.php">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>

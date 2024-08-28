@@ -101,7 +101,7 @@
                     <button type="submit" class="btn btn-primary btn-block btn-login">Entrar</button>
                 </form>
                 <div class="login-form-footer">
-                    <p>Ainda não possui uma conta? <a href="#">Registre-se aqui</a></p>
+                    <p>Ainda não possui uma conta? <a href="register.php">Registre-se aqui</a></p>
                 </div>
             </div>
         </div>
