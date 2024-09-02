@@ -26,6 +26,8 @@ class Produto {
                 return new Apostilas($nome, $preco);
             case "Acessórios":
                 return new Acessorios($nome, $preco);
+            case "Cursos":
+                    return new Cursos($nome, $preco);
             default:
                 throw new Exception("Tipo de produto desconhecido: $tipo");
         }

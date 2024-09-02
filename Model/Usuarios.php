@@ -1,9 +1,8 @@
 <?php
 
-require "BancodeDados.php"; 
+require_once "BancodeDados.php"; 
 
 class Usuarios {
-
     // Atributos
     private int $id;
     private string $email;
@@ -14,9 +13,8 @@ class Usuarios {
     private $dataNascimento;
     private string $descricao;
     private string $nacionalidade;
-    private $conn; // Adicionado para a conexão com o banco de dados
+    private $conn;
 
-    // Construtor da classe
     public function __construct($Id = null, $Email = '', $Senha = '', $Nome = '', $CPF = 0, $TipoUs = '', $Nacionalidade = '', $dataNascimento = '') {
         $this->conn = ConexaoBancoDados::getInstance()->conectar();
         $this->id = $Id;
@@ -94,10 +92,20 @@ class Usuarios {
         $this->dataNascimento = $dataNascimento;
     }
 
+    public function getDescricao() {
+        return $this->descricao;
+    }
+
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
+    }
+
+    // Método para registrar o usuário no banco de dados
     public function registrar() {
-        // Pega a instância da conexão e chama o método de inserção
-        $conexao = BancodeDados::getInstance();
-        $conexao->inserirUsuario(
+        $conexao = ConexaoBancoDados::getInstance();
+
+        // Verificar sucesso ou falha da inserção
+        if ($conexao->inserirUsuario(
             $this->email, 
             $this->senha, 
             $this->nome, 
@@ -105,8 +113,11 @@ class Usuarios {
             $this->nacionalidade, 
             $this->dataNascimento, 
             $this->descricao
-        );
+        )) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    
 }
 ?>

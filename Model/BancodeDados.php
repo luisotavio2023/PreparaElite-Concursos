@@ -44,41 +44,41 @@ class ConexaoBancoDados {
     private function __clone() {}
 
     // Método para inserir um usuário no banco de dados
-public function inserirUsuario($email, $senha, $nome, $cpf, $nacionalidade, $dataNascimento, $descricao) {
-    $tipous = "Aluno"; // Define o tipo de usuário como "Aluno" por padrão
-
-    // Prepara o SQL para inserção
-    $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, nacionalidade, data_nascimento, descricao) 
-            VALUES ($email, $senha, $nome, $cpf, $nacionalidade, $dataNascimento, $descricao)";
-
-    $stmt = $this->conn->prepare($sql); // Prepara a declaração
-    if ($stmt) {
-        // Definindo os parâmetros e executando
-        $stmt->bind_param(
-            "ssssssss", 
-            $email, 
-            password_hash($senha, PASSWORD_BCRYPT), // Hash da senha
-            $nome, 
-            $cpf, 
-            $tipous, 
-            $nacionalidade, 
-            $dataNascimento, 
-            $descricao
-        );
-
-        // Execução do statement
-        if ($stmt->execute()) {
-            echo "Usuário registrado com sucesso!";
+    public function inserirUsuario($email, $senha, $nome, $cpf, $nacionalidade, $dataNascimento, $descricao) {
+        $tipous = "Aluno"; // Define o tipo de usuário como "Aluno" por padrão
+    
+        // Prepara o SQL para inserção com marcadores de posição
+        $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, nacionalidade, data_nascimento, descricao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        $stmt = $this->conn->prepare($sql); // Prepara a declaração
+    
+        if ($stmt) {
+            // Definindo os parâmetros e executando
+            $hashedPassword = password_hash($senha, PASSWORD_BCRYPT);
+            $stmt->bind_param(
+                "ssssssss",
+                $email,
+                $hashedPassword, // Hash da senha
+                $nome,
+                $cpf,
+                $tipous,
+                $nacionalidade,
+                $dataNascimento,
+                $descricao
+            );
+    
+            // Execução do statement
+            if ($stmt->execute()) {
+                echo "Usuário registrado com sucesso!";
+            } else {
+                echo "Erro ao registrar usuário: " . $stmt->error;
+            }
+    
+            $stmt->close();
         } else {
-            echo "Erro ao registrar usuário: " . $stmt->error;
+            echo "Erro na preparação do SQL: " . $this->conn->error;
         }
-
-        $stmt->close();
-    } else {
-        echo "Erro na preparação do SQL: " . $this->conn->error;
     }
-}
-
 }
 
 
