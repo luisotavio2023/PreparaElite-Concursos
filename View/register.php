@@ -16,26 +16,6 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Perfil
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Gerenciar Perfil</a>
-              <a class="dropdown-item" href="#">Carrinho</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Sair/logout</a>
-            </div>
           </li>
         </ul>
       </div>
@@ -58,8 +38,8 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>
               </div>
               <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Sua Senha" required>
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Sua Senha" required>
               </div>
               <div class="form-group">
                 <label for="cpf">CPF</label>

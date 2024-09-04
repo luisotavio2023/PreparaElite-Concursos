@@ -44,27 +44,26 @@ class ConexaoBancoDados {
     private function __clone() {}
 
     // Método para inserir um usuário no banco de dados
-    public function inserirUsuario($email, $senha, $nome, $cpf, $nacionalidade, $dataNascimento, $descricao) {
+    public function inserirUsuario($email, $senha, $nome, $cpf, $dataNascimento, $descricao, $nacionalidade) {
         $tipous = "Aluno"; // Define o tipo de usuário como "Aluno" por padrão
     
         // Prepara o SQL para inserção com marcadores de posição
-        $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, nacionalidade, data_nascimento, descricao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, datanasc, descricao, nacionalidade) VALUES ('$email', '$senha', '$nome', '$cpf', '$dataNascimento', '$descricao', '$nacionalidade')";
     
         $stmt = $this->conn->prepare($sql); // Prepara a declaração
     
         if ($stmt) {
             // Definindo os parâmetros e executando
-            $hashedPassword = password_hash($senha, PASSWORD_BCRYPT);
             $stmt->bind_param(
-                "ssssssss",
+                "ssssssss", // 's' para string - um para cada parâmetro
                 $email,
-                $hashedPassword, // Hash da senha
+                $senha,
                 $nome,
                 $cpf,
                 $tipous,
-                $nacionalidade,
                 $dataNascimento,
-                $descricao
+                $descricao,
+                $nacionalidade
             );
     
             // Execução do statement

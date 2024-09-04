@@ -19,13 +19,13 @@ class UserController {
             $email = $_POST["email"];
             $senha = $_POST["senha"];
             $cpf = $_POST["cpf"];
-            $tipous = $_POST["tipous"];
+            $tipous = $_POST["tipous"]; // Valor padrão se não estiver no formulário
             $nacionalidade = $_POST["nacionalidade"];
             $dataNascimento = $_POST["dataNascimento"];
-
+    
             // Criar uma instância da classe Usuarios
             $usuario = new Usuarios(null, $email, $senha, $nome, $cpf, $tipous, $nacionalidade, $dataNascimento);
-
+    
             try {
                 // Inserir o usuário no banco de dados
                 if ($usuario->registrar()) {

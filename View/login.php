@@ -8,109 +8,48 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-          body {
-            background-color: #f8f9fa;
-            color: #000;
-            font-family: Arial, sans-serif;
-            position: relative;
-            padding-bottom: 100px; /* para dar espaço ao parágrafo de copyright */
-        }
-
-        .login-container {
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .login-form-footer {
-            text-align: center;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-        }
-
-        .btn-login {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-login:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 200px;
-        }
-
-        .copyright {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 12px;
-            color: #999;
-        }
-    </style>
   </head>
-  <body>
+  <body class="bg-light text-dark" style="padding-bottom: 100px;">
 
-  <nav class="navbar navbar-expand-lg" style="background-color: #004aad;">
-  <a class="navbar-brand" href="#" style="color: white;">PreparaElite Concursos</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg" style="background-color: #004aad;">
+      <a class="navbar-brand text-white" href="#">PreparaElite Concursos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
 
-</div>
-</nav>
-
-  
-  <div class="container login-container">
-        <div class="logo">
-            <img src="../images/BrasaoPreparaSF.png" alt="ConcurseiroElite Pro">
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="login-form-header">
-                    <h2>Bem-vindo ao PreparaElite Concursos</h2>
-                    <small>Faça login para acessar seus cursos</small>
-                </div>
-                <form>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Sua Senha" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block btn-login">Entrar</button>
-                </form>
-                <div class="login-form-footer">
-                    <p>Ainda não possui uma conta? <a href="register.php">Registre-se aqui</a></p>
-                </div>
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="text-center mb-4">
+            <img src="../images/BrasaoPreparaSF.png" alt="ConcurseiroElite Pro" class="img-fluid" style="max-width: 200px;">
+          </div>
+          <div class="bg-white p-4 rounded shadow">
+            <div class="text-center mb-4">
+              <h2>Bem-vindo ao PreparaElite Concursos</h2>
+              <small>Faça login para acessar seus cursos</small>
             </div>
+            <form>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Sua Senha" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+            <div class="text-center mt-3">
+              <p>Ainda não possui uma conta? <a href="register.php">Registre-se aqui</a></p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <p class="copyright">&copy; 2024 PreparaElite Pro - Todos os direitos reservados</p>
+    <footer class="fixed-bottom text-center bg-light py-2">
+      <p class="mb-0 text-muted">&copy; 2024 PreparaElite Pro - Todos os direitos reservados</p>
+    </footer>
 
-  
-      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
