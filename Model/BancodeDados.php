@@ -1,7 +1,5 @@
 <?php
 
-
-
 class ConexaoBancoDados {
     private static $instance = null;
     private $servername = "localhost";

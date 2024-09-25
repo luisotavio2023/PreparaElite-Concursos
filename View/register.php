@@ -42,6 +42,10 @@
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Sua Senha" required>
               </div>
               <div class="form-group">
+                <label for="senha">Seu nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
+              </div>
+              <div class="form-group">
                 <label for="cpf">CPF</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
               </div>

@@ -15,16 +15,16 @@ class UserController {
         // Verificar se o formulário foi submetido
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Armazenar os dados do formulário em variáveis
-            $nome = $_POST["nome"];
             $email = $_POST["email"];
             $senha = $_POST["senha"];
+            $nome = $_POST["nome"];
             $cpf = $_POST["cpf"];
-            $tipous = $_POST["tipous"]; // Valor padrão se não estiver no formulário
+            $dataNascimento = $_POST["datanasc"];
+            $descricao = $_POST["descricao"];
             $nacionalidade = $_POST["nacionalidade"];
-            $dataNascimento = $_POST["dataNascimento"];
     
             // Criar uma instância da classe Usuarios
-            $usuario = new Usuarios(null, $email, $senha, $nome, $cpf, $tipous, $nacionalidade, $dataNascimento);
+            $usuario = new Usuarios(null, $email, $senha, $nome, $cpf, $tipous, $dataNascimento, $descricao, $nacionalidade);
     
             try {
                 // Inserir o usuário no banco de dados
