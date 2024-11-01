@@ -57,11 +57,15 @@ CREATE TABLE `produtos` (
 -- Estrutura da tabela `professores`
 --
 
-CREATE TABLE `professores` (
-  `id_usuario` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL,
-  `salario` float DEFAULT NULL,
-  `especializacao` varchar(255) DEFAULT NULL
+CREATE TABLE Professores (
+    'codigo' INT PRIMARY KEY AUTO_INCREMENT,
+    'nome' VARCHAR(100) NOT NULL,
+    'email' VARCHAR(100) NOT NULL UNIQUE,
+    'senha' VARCHAR(255) NOT NULL,
+    'foto' BLOB,
+    'data_nascimento' DATE NOT NULL,
+    'cpf' CHAR(11) UNIQUE NOT NULL,
+    'salario' float(8) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,9 +102,15 @@ CREATE TABLE `vendas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tabelas despejadas
+-- Estrutura da tabela 'aulas'
 --
 
+CREATE TABLE Aulas (
+    'id' INT PRIMARY KEY AUTO_INCREMENT,
+    'professor_codigo' INT NOT NULL,
+    'disciplina' varchar(60) NOT NULL,
+    'relatorio' TEXT(512),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Índices para tabela `carrinho`
 --
@@ -114,12 +124,6 @@ ALTER TABLE `carrinho`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `professores`
---
-ALTER TABLE `professores`
-  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Índices para tabela `usuarios`
