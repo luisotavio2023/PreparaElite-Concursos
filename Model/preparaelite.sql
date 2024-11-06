@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Abr-2024 às 22:09
+-- Tempo de geração: 19-Jun-2024 às 22:09
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `preparaelite`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carrinho`
+--
+
+CREATE TABLE `carrinho` (
+  `id` int(4) NOT NULL,
+  `usuario_id` int(4) NOT NULL,
+  `produto_id` int(4) NOT NULL,
+  `quantidade` int(3) NOT NULL,
+  `valor_total` float NOT NULL,
+  `data_adicao` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -67,9 +82,32 @@ CREATE TABLE `usuarios` (
   `nacionalidade` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `id` int(4) NOT NULL,
+  `usuario_id` int(4) NOT NULL,
+  `produto_id` int(4) NOT NULL,
+  `quantidade` int(3) NOT NULL,
+  `valor_total` float NOT NULL,
+  `data_venda` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `produto_id` (`produto_id`);
 
 --
 -- Índices para tabela `produtos`
@@ -90,8 +128,22 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `produto_id` (`produto_id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -106,14 +158,34 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `carrinho_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
 
 --
 -- Limitadores para a tabela `professores`
 --
 ALTER TABLE `professores`
   ADD CONSTRAINT `professores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+
+--
+-- Limitadores para a tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
