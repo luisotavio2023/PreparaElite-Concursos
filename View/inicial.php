@@ -45,6 +45,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -74,13 +76,13 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
+      <img class="d-block w-100" src="../images/primeirobanner.jpeg" alt="First slide" style="object-fit: cover;">>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
+      <img class="d-block w-100" src="../images/imagempromo.png" alt="Second slide" style="object-fit: cover;">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
+      <img class="d-block w-100" src="..." alt="Third slide" style="height: 490px; object-fit: cover;">
     </div>
   </div>
 </div>

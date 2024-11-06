@@ -2,13 +2,16 @@
 <html lang="pt-BR">
   <head>
     <title>Página de registro - PreparaElite Concursos</title>
+    <title>Página de registro - PreparaElite Concursos</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
+  <body class="bg-light text-dark" style="padding-bottom: 100px;">
   <body class="bg-light text-dark" style="padding-bottom: 100px;">
 
     <nav class="navbar navbar-expand-lg" style="background-color: #004aad;">
@@ -89,9 +92,12 @@
 
     <p class="position-fixed bottom-0 right-0 mb-3 mr-3 text-muted" style="font-size: 12px;">&copy; 2024 ConcurseiroElite Pro - Todos os direitos reservados</p>
 
+    <p class="position-fixed bottom-0 right-0 mb-3 mr-3 text-muted" style="font-size: 12px;">&copy; 2024 ConcurseiroElite Pro - Todos os direitos reservados</p>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
@@ -99,5 +105,10 @@
         $('#cpf').mask('000.000.000-00', {reverse: true});
       });
     </script>
+      $(document).ready(function(){
+        $('#cpf').mask('000.000.000-00', {reverse: true});
+      });
+    </script>
   </body>
 </html>
+
