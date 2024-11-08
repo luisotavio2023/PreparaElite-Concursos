@@ -29,12 +29,17 @@
               <h2>Bem-vindo ao PreparaElite Concursos</h2>
               <small>Faça login para acessar seus cursos</small>
             </div>
-            <form>
+
+            <?php if (isset($_GET['erro'])): ?>
+                <p class="text-danger">Erro ao acessar! Tente novamente!</p>
+            <?php endif; ?>
+
+            <form method="post" action="../Control/UserController.php">
               <div class="form-group">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>
+                <input type="email" class="form-control" id="email" name="login_email" placeholder="Seu Email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Sua Senha" required>
+                <input type="password" class="form-control" id="password" name="login_password" placeholder="Sua Senha" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Entrar</button>
             </form>

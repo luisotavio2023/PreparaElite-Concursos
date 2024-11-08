@@ -55,7 +55,14 @@
               <h2>Bem-vindo ao PreparaElite Concursos</h2>
               <p>Faça seu registro e seja bem vindo(a)!</p>
             </div>
+            <?php if (isset($_GET['erro'])): ?>
+                <p class="text-danger">Erro ao registrar o usuário! Tente novamente!</p>
+            <?php endif; ?>
             <form method="post" action="../Control/UserController.php">
+            <div class="form-group">
+                <label for="email">Nome</label>
+                <input type="nome" class="form-control" id="nome" name="nome" placeholder="Seu Email" required>
+              </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>

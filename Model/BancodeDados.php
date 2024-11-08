@@ -46,26 +46,13 @@ class ConexaoBancoDados {
         $tipous = "Aluno"; // Define o tipo de usuário como "Aluno" por padrão
     
         // Prepara o SQL para inserção com marcadores de posição
-        $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, datanasc, descricao, nacionalidade) VALUES ('$email', '$senha', '$nome', '$cpf', '$dataNascimento', '$descricao', '$nacionalidade')";
+        $sql = "INSERT INTO usuarios (email, senha, nome, cpf, tipous, datanasc, descricao, nacionalidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
         $stmt = $this->conn->prepare($sql); // Prepara a declaração
     
         if ($stmt) {
             // Definindo os parâmetros e executando
-            $stmt->bind_param(
-                "ssssssss", // 's' para string - um para cada parâmetro
-                $email,
-                $senha,
-                $nome,
-                $cpf,
-                $tipous,
-                $dataNascimento,
-                $descricao,
-                $nacionalidade
-            );
-    
-            // Execução do statement
-            if ($stmt->execute()) {
+            if ($stmt->execute([$email, $senha, $nome, $cpf, 'aluno', $dataNascimento, $descricao, $nacionalidade])) {
                 echo "Usuário registrado com sucesso!";
             } else {
                 echo "Erro ao registrar usuário: " . $stmt->error;
@@ -74,6 +61,19 @@ class ConexaoBancoDados {
             $stmt->close();
         } else {
             echo "Erro na preparação do SQL: " . $this->conn->error;
+        }
+    }
+
+    public function acessar($email, $senha){
+        $stmt = $this->conn->prepare("SELECT id, senha FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
+        $stmt->bind_result($id, $senhaHash);
+
+        // Verificar se o usuário foi encontrado e a senha está correta
+        if ($stmt->fetch() && password_verify($senha, $senhaHash)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

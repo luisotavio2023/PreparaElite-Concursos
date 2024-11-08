@@ -8,7 +8,7 @@ class Usuarios {
     private string $email;
     private string $senha;
     private string $nome;
-    private int $cpf;
+    private string $cpf;
     private string $tipous;
     private $dataNascimento;
     private string $descricao;
@@ -113,6 +113,21 @@ class Usuarios {
             $this->nacionalidade, 
             $this->dataNascimento, 
             $this->descricao
+        )) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Método para registrar o usuário no banco de dados
+    public function acessar() {
+        $conexao = ConexaoBancoDados::getInstance();
+
+        // Verificar sucesso ou falha da inserção
+        if ($conexao->acessar(
+            $this->email, 
+            $this->senha
         )) {
             return true;
         } else {
