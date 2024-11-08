@@ -66,7 +66,7 @@ CREATE TABLE `professores` (
 CREATE TABLE `usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` VARCHAR(90) NOT NULL,
-  `senha` VARCHAR(20) NOT NULL,
+  `senha` TEXT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `cpf` CHAR(11) NOT NULL,
   `tipous` VARCHAR(25) NOT NULL,
