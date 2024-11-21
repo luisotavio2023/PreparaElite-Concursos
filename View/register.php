@@ -46,7 +46,7 @@
   
     <div class="container mt-5">
       <div class="text-center mb-4">
-        <img src="../images/BrasaoPreparaSF.png" alt="ConcurseiroElite Pro" class="img-fluid" style="width: 200px;">
+        <img src="../images/BrasaoPreparaSF.png" alt="PreparaElite Concursos brasão" class="img-fluid" style="width: 200px;">
       </div>
       <div class="row justify-content-center">
         <div class="col-md-6">
@@ -108,10 +108,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-      $(document).ready(function(){
-        $('#cpf').mask('000.000.000-00', {reverse: true});
-      });
-    </script>
       $(document).ready(function(){
         $('#cpf').mask('000.000.000-00', {reverse: true});
       });

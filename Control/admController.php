@@ -17,9 +17,9 @@ class AdmController {
         include '../View/Adm.php';
     }
 
-    private function listarProfessores() {
+    public function listarProfessores() {
         $conn = ConexaoBancoDados::getInstance()->conectar();
-        $query = "SELECT codigo, nome, email, cpf, salario, formacao FROM professores";
+        $query = "SELECT * FROM professores";
         $result = $conn->query($query);
 
         if ($result === false) {
@@ -42,9 +42,9 @@ class AdmController {
         return $professores;
     }
 
-    private function listarUsuarios() {
+    public function listarUsuarios() {
         $conn = ConexaoBancoDados::getInstance()->conectar();
-        $query = "SELECT codigo, nome, email, cpf, tipous, datanasc, descricao, nacionalidade FROM usuarios";
+        $query = "SELECT * FROM usuarios";
         $result = $conn->query($query);
 
         if ($result === false) {
@@ -54,7 +54,7 @@ class AdmController {
         $usuarios = [];
         while ($row = $result->fetch_assoc()) {
             $usuarios[] = new Usuarios(
-                $row['codigo'],
+                $row['id'],
                 $row['email'],
                 '',  // Senha, não é usada aqui
                 $row['nome'],

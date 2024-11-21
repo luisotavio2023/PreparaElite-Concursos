@@ -2,6 +2,7 @@
 
 require_once "../Model/BancodeDados.php";
 require_once "../Model/Usuarios.php";
+require_once "../Model/Professores.php";
 
 class UserController {
 
@@ -25,16 +26,35 @@ class UserController {
     }
 
     public function login($email, $senha) {
-        // Preparar uma declaração SQL para buscar o usuário pelo email
+        // Criar os objetos de usuário e professor com os dados fornecidos
         $usuario = new Usuarios(0, $email, $senha, "", "", '', "", "");
+        $professor = new Professores(0, $email, $senha, "", "", "", "", "");
+    
         // Tentar acessar
         try {
-            $usuario->acessar();
-            return true;
+            // Verificar se o usuário é válido
+            if ($usuario->acessar()) {
+                // Redirecionar para a página de usuário comum (ex: inicial.php)
+                header("Location: ../View/inicial.php");
+                exit; // Parar a execução do código após o redirecionamento
+            } 
+            // Verificar se o professor é válido
+            else if ($professor->acessar()) {
+                // Redirecionar para a página do professor (ex: professorprin.php)
+                header("Location: ../View/professorprin.php");
+                exit; // Parar a execução do código após o redirecionamento
+            } else {
+                // Caso o login falhe (nenhum usuário ou professor encontrado)
+                return false;
+            }
         } catch (Exception $e) {
-           return false;
+            // Caso haja erro na execução da consulta ou outra exceção
+            return false;
         }
     }
+    
+    
+    
 
     public function CadastroCurriculo() {
         // Armazenar os dados do formulário em variáveis
@@ -47,7 +67,6 @@ class UserController {
 
         if ($arquivo && $arquivo["error"] == UPLOAD_ERR_OK) {
             $extensao = strtolower(pathinfo($arquivo["name"], PATHINFO_EXTENSION));
-
             if (in_array($extensao, ["docx", "doc", "pdf"])) {
                 $nomeUnico = uniqid() . "." . $extensao;
                 $destino = "uploads/" . $nomeUnico;

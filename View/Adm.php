@@ -1,12 +1,6 @@
 <?php
-if (!empty($data)) {
-    echo "<div style='color: green; text-align: center;'>Data loaded successfully!</div>";
-} else {
-    echo "<div style='color: red; text-align: center;'>No data found.</div>";
-}
+    include ("../Control/admController.php");
 ?>
-
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -42,8 +36,8 @@ if (!empty($data)) {
                 <div class="form-group">
                     <label for="tipo">Selecione o tipo:</label>
                     <select name="tipo" id="tipo" class="form-control" onchange="this.form.submit()">
-                        <option value="professores" <?php echo (isset($_POST['tipo']) && $_POST['tipo'] === 'professores') ? 'selected' : ''; ?>>Professores</option>
                         <option value="usuarios" <?php echo (isset($_POST['tipo']) && $_POST['tipo'] === 'usuarios') ? 'selected' : ''; ?>>Usuários</option>
+                        <option value="professores" <?php echo (isset($_POST['tipo']) && $_POST['tipo'] === 'professores') ? 'selected' : ''; ?>>Professores</option>
                     </select>
                 </div>
             </form>
@@ -51,7 +45,11 @@ if (!empty($data)) {
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <?php if (isset($_POST['tipo']) && $_POST['tipo'] === 'professores'): ?>
+                        <?php 
+                        $obj = new AdmController();
+                        if (isset($_POST['tipo']) && $_POST['tipo'] === 'professores'){
+                            $data = $obj->listarProfessores(); 
+                        ?>
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
@@ -60,7 +58,8 @@ if (!empty($data)) {
                             <th scope="col">Data de Nascimento</th>
                             <th scope="col">CPF</th>
                             <th scope="col">Salário</th>
-                        <?php else: ?>
+                        <?php } else { 
+                            $data = $obj->listarUsuarios(); ?>
                             <th scope="col">ID</th>
                             <th scope="col">Email</th>
                             <th scope="col">Senha</th>
@@ -70,7 +69,7 @@ if (!empty($data)) {
                             <th scope="col">Data de Nascimento</th>
                             <th scope="col">Descrição</th>
                             <th scope="col">Nacionalidade</th>
-                        <?php endif; ?>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,7 +92,7 @@ if (!empty($data)) {
                                     <td><?php echo $row->getNome(); ?></td>
                                     <td><?php echo $row->getCPF(); ?></td>
                                     <td><?php echo $row->getTipoUs(); ?></td>
-                                    <td><?php echo date('d/m/Y', strtotime($row->getDataNasc())); ?></td>
+                                    <td><?php echo date('d/m/Y', strtotime($row->getDataNascimento())); ?></td>
                                     <td><?php echo $row->getDescricao(); ?></td>
                                     <td><?php echo $row->getNacionalidade(); ?></td>
                                 <?php endif; ?>

@@ -15,7 +15,7 @@ class Usuarios {
     private string $nacionalidade;
     private $conn;
 
-    public function __construct($Id = null, $Email = '', $Senha = '', $Nome = '', $CPF = 0, $TipoUs = '', $Nacionalidade = '', $dataNascimento = '') {
+    public function __construct($Id = null, $Email = '', $Senha = '', $Nome = '', $CPF = 0, $TipoUs = '', $Nacionalidade = '', $dataNascimento = '', $descricao = '') {
         $this->conn = ConexaoBancoDados::getInstance()->conectar();
         $this->id = $Id;
         $this->email = $Email;
@@ -25,6 +25,7 @@ class Usuarios {
         $this->tipous = $TipoUs;
         $this->nacionalidade = $Nacionalidade;
         $this->dataNascimento = $dataNascimento;
+        $this->descricao = $descricao;
     }
 
     // Métodos Getters e Setters
@@ -120,7 +121,7 @@ class Usuarios {
         }
     }
 
-    // Método para registrar o usuário no banco de dados
+    // Método para logar
     public function acessar() {
         $conexao = ConexaoBancoDados::getInstance();
 
