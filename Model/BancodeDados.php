@@ -64,6 +64,28 @@ class ConexaoBancoDados {
         }
     }
 
+        // Método para inserir um usuário no banco de dados
+        public function inserirProfessor($nome, $email, $senha, $foto, $dataNascimento, $cpf, $salario, $formacao) {
+        
+            // Prepara o SQL para inserção com marcadores de posição
+            $sql = "INSERT INTO professores (nome, email, senha, foto, data_nascimento, cpf, salario, formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        
+            $stmt = $this->conn->prepare($sql); // Prepara a declaração
+        
+            if ($stmt) {
+                // Definindo os parâmetros e executando
+                if ($stmt->execute([$nome, $email, $senha, $foto, $dataNascimento, $cpf, $salario, $formacao])) {
+                    echo "Professor registrado com sucesso!";
+                } else {
+                    echo "Erro ao registrar professor: " . $stmt->error;
+                }
+        
+                $stmt->close();
+            } else {
+                echo "Erro na preparação do SQL: " . $this->conn->error;
+            }
+        }
+
     public function acessar($email, $senha){
         $stmt = $this->conn->prepare("SELECT id, senha FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);

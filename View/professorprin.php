@@ -158,7 +158,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <!-- Conteúdo da Modal do Perfil do Professor -->
+                           <img></img>
+                                <input type="text" disabled>
+                           </div>
                         </div>
                     </div>
                 </div>

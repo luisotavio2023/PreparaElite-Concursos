@@ -30,12 +30,14 @@ class AdmController {
         while ($row = $result->fetch_assoc()) {
             $professores[] = new Professores(
                 $row['codigo'],
-                $row['nome'],
                 $row['email'],
-                '', // Nacionalidade
+                '',
+                $row['nome'],
                 $row['cpf'],
+                $row['foto'],
                 $row['formacao'],
-                $row['salario']
+                $row['data_nascimento'],
+                floatval($row['salario'])
             );
         }
         echo "Professores encontrados: " . count($professores) . "<br>";  // Verifica o número de professores

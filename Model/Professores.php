@@ -16,7 +16,7 @@ class Professores {
     private int $codigo;
 
     // Construtor
-    public function __construct($codigo = null, $Email = '', $Senha = '', $Nome = '', $CPF = '', $foto = '', $formacao = '', $dataNascimento = '') {
+    public function __construct($codigo = null, $Email = '', $Senha = '', $Nome = '', $CPF = '', $foto = '', $formacao = '', $dataNascimento = '', $salario = 0) {
         $this->conn = ConexaoBancoDados::getInstance()->conectar();
         $this->codigo = $codigo;
         $this->email = $Email;
@@ -26,6 +26,7 @@ class Professores {
         $this->foto = $foto;
         $this->dataNascimento = $dataNascimento;
         $this->formacao = $formacao;
+        $this->salario = $salario;
     }
 
     // Código
@@ -108,6 +109,27 @@ class Professores {
     public function setSalario($salario): void {
         $this->salario = $salario;
     }
+
+        // Método para registrar o professor no banco de dados
+        public function registrar() {
+            $conexao = ConexaoBancoDados::getInstance();
+    
+            // Verificar sucesso ou falha da inserção
+            if ($conexao->inserirProfessor(
+                $this->nome, 
+                $this->email, 
+                $this->senha, 
+                $this->foto, 
+                $this->dataNascimento, 
+                $this->cpf, 
+                $this->salario,
+                $this->formacao
+            )) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     public function acessar() {
       $stmt = $this->conn->prepare("SELECT codigo, senha FROM professores WHERE email = ?");
