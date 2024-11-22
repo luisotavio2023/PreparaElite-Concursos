@@ -18,7 +18,7 @@ class TeacherController{
         $professor->setDescricao($descricao);
         // Tentar registrar o usuário
         try {
-            $usuario->registrar();
+            $professor->registrar();
             return true;
         } catch (Exception $e) {
            return false;

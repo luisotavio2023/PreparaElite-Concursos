@@ -116,14 +116,14 @@ class Professores {
     
             // Verificar sucesso ou falha da inserção
             if ($conexao->inserirProfessor(
-                $this->nome, 
                 $this->email, 
                 $this->senha, 
-                $this->foto, 
-                $this->dataNascimento, 
+                $this->nome, 
                 $this->cpf, 
-                $this->salario,
-                $this->formacao
+                $this->foto, 
+                $this->formacao, 
+                $this->dataNascimento,
+                $this->salario
             )) {
                 return true;
             } else {
