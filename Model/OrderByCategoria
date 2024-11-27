@@ -1,0 +1,10 @@
+<?php
+
+class OrderByCategoria implements Strategy {
+    public function execute(array $cursos): array {
+        usort($cursos, fn($a, $b) => strcmp($a['categoria'], $b['categoria']));
+        return $cursos;
+    }
+}
+
+?>
