@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <style>
+    .vertical-line {
+      border-right: 2px solid #ccc;
+      height: 100vh;
+    }
+  </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
@@ -57,23 +63,126 @@
       </div>
     </div>
 
-    <div class="container mt-4">
-      <div class="row justify-content-center">
-        <?php foreach ($produtos as $produto): ?>
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-              <img src="imagens/<?php echo $produto['ImgProduto']; ?>" class="card-img-top" alt="<?php echo $produto['nome']; ?>">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
-                <p class="card-text"><?php echo $produto['descricao']; ?></p>
-                <p class="card-text">Quantidade disponível: <?php echo $produto['qtdprod']; ?></p>
-                <p class="card-text">R$ <?php echo number_format($produto['valor'], 2, ',', '.'); ?></p>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
+    <div class="container-fluid">
+  <div class="row">
+    <!-- Barra Lateral (Lado Esquerdo) com Contorno, sem a barra lateral -->
+    <div class="col-12 col-md-3 p-3 ms-3" style="border-right: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px 0 0 8px;">
+      <h5 class="fw-bold text-uppercase mb-4">Policiais</h5>
+
+      <!-- Lista de Carreiras -->
+      <div class="accordion accordion-flush">
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícia Militar</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícia Civil</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícia Federal</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícia Rodoviária Federal</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Depen</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícia Científica</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Polícias Legislativas</a>
+          </h6>
+        </div>
+      </div>
+
+      <!-- Seção Nível -->
+      <div class="mt-4">
+        <h5 class="fw-bold text-dark text-uppercase mb-3">Tribunais</h5>
+       <!-- Lista de Carreiras -->
+      <div class="accordion accordion-flush">
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Supremo Tribunal Federal</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Supremo Tribunal de Justiça</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Tribunal de Justiça</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Tribunal Regional Eleitoral</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Tribunal Regional Federal</a>
+          </h6>
+        </div>
+        <div class="accordion-item border-0">
+          <h6 class="accordion-header">
+            <a href="#" class="text-decoration-none text-secondary">Tribunal Regional do Trabalho</a>
+          </h6>
+        </div>
+      </div>
+      </div>
+
+      <!-- Seção Extra -->
+      <div class="mt-4">
+        <h5 class="fw-bold text-dark text-uppercase mb-3"></h5>
+        <ul class="list-unstyled">
+          <li class="form-check">
+            <input class="form-check-input" type="checkbox" id="editalAberto" />
+            <label class="form-check-label" for="editalAberto">Edital Aberto</label>
+          </li>
+          <li class="form-check">
+            <input class="form-check-input" type="checkbox" id="inscricoesAbertas" />
+            <label class="form-check-label" for="inscricoesAbertas">Inscrições Abertas</label>
+          </li>
+        </ul>
       </div>
     </div>
+
+    <!-- Conteúdo Principal (Lado Direito) -->
+    <div class="col-12 col-md-8 p-3">
+      <?php foreach ($produtos as $produto): ?>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card">
+            <img src="imagens/<?php echo $produto['ImgProduto']; ?>" class="card-img-top" alt="<?php echo $produto['nome']; ?>">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
+              <p class="card-text"><?php echo $produto['descricao']; ?></p>
+              <p class="card-text">Quantidade disponível: <?php echo $produto['qtdprod']; ?></p>
+              <p class="card-text">R$ <?php echo number_format($produto['valor'], 2, ',', '.'); ?></p>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
+
+
+
 
     <footer class="bg-primary text-white py-4">
       <div class="container">
