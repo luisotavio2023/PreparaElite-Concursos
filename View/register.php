@@ -1,117 +1,194 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <title>Página de registro - PreparaElite Concursos</title>
-    <title>Página de registro - PreparaElite Concursos</title>
-    <!-- Required meta tags -->
+    <title>Cadastro | PreparaElite Concursos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
-  <body class="bg-light text-dark" style="padding-bottom: 100px;">
-  <body class="bg-light text-dark" style="padding-bottom: 100px;">
-
-    <nav class="navbar navbar-expand-lg" style="background-color: #004aad;">
-      <a class="navbar-brand text-white" href="#">PreparaElite Concursos</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Perfil
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Gerenciar Perfil</a>
-              <a class="dropdown-item" href="#">Carrinho</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Sair/logout</a>
-            </div>
-          </li>
-        </ul>
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="#">
+          <i class="fas fa-graduation-cap me-2"></i>PreparaElite
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-book me-1"></i> Cursos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-  
-    <div class="container mt-5">
-      <div class="text-center mb-4">
-        <img src="../images/BrasaoPreparaSF.png" alt="PreparaElite Concursos brasão" class="img-fluid" style="width: 200px;">
-      </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
       <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="bg-white p-4 rounded shadow-sm mb-4">
-            <div class="text-center mb-4">
-              <h2>Bem-vindo ao PreparaElite Concursos</h2>
-              <p>Faça seu registro e seja bem vindo(a)!</p>
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-lg overflow-hidden">
+            <div class="card-header bg-primary text-white py-3 text-center">
+              <h3 class="mb-1">Crie sua conta</h3>
+              <p class="mb-0">Junte-se a milhares de concurseiros de elite</p>
             </div>
-            <?php if (isset($_GET['erro'])): ?>
-                <p class="text-danger">Erro ao registrar o usuário! Tente novamente!</p>
-            <?php endif; ?>
-            <form method="post" action="../Control/UserController.php">
-            <div class="form-group">
-                <label for="email">Nome</label>
-                <input type="nome" class="form-control" id="nome" name="nome" placeholder="Seu Email" required>
+            <div class="card-body p-4 p-md-5">
+              <div class="text-center mb-4">
+                <img src="../images/BrasaoPreparaSF.png" alt="PreparaElite" class="img-fluid" style="max-width: 180px;">
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Seu Email" required>
+              
+              <?php if (isset($_GET['erro'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                  <strong>Erro!</strong> Não foi possível completar seu cadastro. Por favor, tente novamente.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+              <?php endif; ?>
+              
+              <form method="post" action="../Control/UserController.php">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome completo</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">E-mail</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row g-3 mt-1">
+                  <div class="col-md-6">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Crie uma senha forte" required>
+                    </div>
+                    <div class="form-text">Mínimo de 8 caracteres</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                      <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row g-3 mt-1">
+                  <div class="col-md-6">
+                    <label for="datanasc" class="form-label">Data de Nascimento</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                      <input type="date" class="form-control" id="datanasc" name="datanasc" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="nacionalidade" class="form-label">Nacionalidade</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-globe-americas"></i></span>
+                      <input type="text" class="form-control" id="nacionalidade" name="nacionalidade" placeholder="Ex: Brasileira" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mt-3">
+                  <label for="descricao" class="form-label">Sobre você</label>
+                  <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Conte um pouco sobre seus objetivos e experiências"></textarea>
+                  <div class="form-text">Esta informação ajudará nossos professores a te conhecerem melhor</div>
+                </div>
+                
+                <div class="form-check mt-3">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-3">
+                  <i class="fas fa-user-plus me-2"></i> Criar conta
+                </button>
+              </form>
+              
+              <div class="d-flex align-items-center my-4">
+                <hr class="flex-grow-1">
+                <span class="px-3 text-muted">ou</span>
+                <hr class="flex-grow-1">
               </div>
-              <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Sua Senha" required>
+              
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <a href="#" class="d-flex align-items-center justify-content-center btn btn-danger mb-2 text-decoration-none">
+                    <i class="fab fa-google me-2"></i> Cadastre-se com Google
+                  </a>
+                </div>
+                <div class="col-md-6">
+                  <a href="#" class="d-flex align-items-center justify-content-center btn btn-primary mb-2 text-decoration-none" style="background-color: #4267b2;">
+                    <i class="fab fa-facebook-f me-2"></i> Cadastre-se com Facebook
+                  </a>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
+              
+              <div class="text-center mt-4">
+                <p class="mb-0">Já tem uma conta? <a href="login.php" class="fw-bold text-decoration-none">Faça login</a></p>
               </div>
-              <div class="form-group">
-                <label for="datanasc">Data de Nascimento</label>
-                <input type="date" class="form-control" id="datanasc" name="datanasc" placeholder="00/00/0000" required>
-              </div>
-              <div class="form-group">
-                <label for="descricao">Sua descrição</label>
-                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descreva-se aqui" required>
-              </div>
-              <div class="form-group">
-                <label for="nacionalidade">Nacionalidade</label>
-                <input type="text" class="form-control" id="nacionalidade" name="nacionalidade" placeholder="Ex: BR" required>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">Registrar</button>
-            </form>
-            <div class="text-center mt-3">
-              <p>Já possui uma conta? <a href="login.php">Clique aqui</a></p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <p class="position-fixed bottom-0 right-0 mb-3 mr-3 text-muted" style="font-size: 12px;">&copy; 2024 ConcurseiroElite Pro - Todos os direitos reservados</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5 py-3">
+      <div class="container">
+        <div class="row text-center text-md-start">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <h5>PreparaElite Concursos</h5>
+            <p class="mb-0">Sua plataforma de preparação para concursos públicos</p>
+          </div>
+          <div class="col-md-6">
+            <h5>Contato</h5>
+            <p class="mb-0">
+              <i class="fas fa-envelope me-2"></i> contato@preparaelite.com.br<br>
+              <i class="fas fa-phone me-2"></i> (00) 1234-5678
+            </p>
+          </div>
+        </div>
+        <hr class="my-3 bg-light">
+        <p class="mb-0 text-center">&copy; 2024 PreparaElite Concursos. Todos os direitos reservados.</p>
+      </div>
+    </footer>
 
-    <p class="position-fixed bottom-0 right-0 mb-3 mr-3 text-muted" style="font-size: 12px;">&copy; 2024 ConcurseiroElite Pro - Todos os direitos reservados</p>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function(){
-        $('#cpf').mask('000.000.000-00', {reverse: true});
+        $('#cpf').mask('000.000.000-00', {reverse: false});
+        
+        // Validação de formulário
+        $('form').submit(function(e) {
+          let password = $('#password').val();
+          if (password.length < 8) {
+            alert('A senha deve ter no mínimo 8 caracteres');
+            e.preventDefault();
+          }
+        });
       });
     </script>
   </body>
 </html>
-

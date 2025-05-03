@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Nov-2024 às 21:40
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 06/12/2024 às 03:38
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,108 +24,126 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aulas`
+-- Estrutura para tabela `banners`
 --
 
-CREATE TABLE `aulas` (
+CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
-  `professor_codigo` int(11) NOT NULL,
-  `disciplina` varchar(60) NOT NULL,
-  `relatorio` text DEFAULT NULL
+  `titulo` varchar(255) NOT NULL,
+  `imagem` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `banners`
+--
+
+INSERT INTO `banners` (`id`, `titulo`, `imagem`, `link`) VALUES
+(1, 'BannerTeste', 'Luiso_gato.png', 'http://direct/Luiso_gato.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `candidatos`
+--
+
+CREATE TABLE `candidatos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `cargo` varchar(100) NOT NULL,
+  `curriculum` varchar(255) NOT NULL,
+  `data_envio` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carrinho`
+-- Estrutura para tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
-  `id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `produto_id` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  `valor_total` decimal(10,2) NOT NULL,
+  `id` int(4) NOT NULL,
+  `usuario_id` int(4) NOT NULL,
+  `produto_id` int(4) NOT NULL,
+  `quantidade` int(3) NOT NULL,
+  `valor_total` float NOT NULL,
   `data_adicao` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
-  `id` int(11) NOT NULL,
+  `id` int(4) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `tipo` varchar(10) NOT NULL,
   `descricao` text NOT NULL,
-  `valor` decimal(10,2) NOT NULL,
-  `material` varchar(250) NOT NULL
+  `valor` float NOT NULL,
+  `qtdprod` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `professores`
+-- Estrutura para tabela `professores`
 --
 
 CREATE TABLE `professores` (
-  `codigo` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `foto` blob DEFAULT NULL,
-  `data_nascimento` date NOT NULL,
   `cpf` char(11) NOT NULL,
+  `data_nascimento` date NOT NULL,
+  `formacao` varchar(100) NOT NULL,
   `salario` decimal(10,2) NOT NULL,
-  `formacao` varchar(255) NOT NULL
+  `foto` varchar(255) NOT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `professores`
+-- Despejando dados para a tabela `professores`
 --
 
-INSERT INTO `professores` (`codigo`, `nome`, `email`, `senha`, `foto`, `data_nascimento`, `cpf`, `salario`, `formacao`) VALUES
-(1, 'João Silva', 'joao.silva@email.com', '$2y$10$EaA3kBpXqJIhrpqyCShWoukmZ2FMFhoh07JG/nr0.l7s1qb67Qdhu', 0x666f746f2e6a7067, '1980-05-15', '12345678901', '5000.00', 'Mestrado em Informática');
+INSERT INTO `professores` (`id`, `nome`, `email`, `senha`, `cpf`, `data_nascimento`, `formacao`, `salario`, `foto`, `criado_em`) VALUES
+(1, 'Professor Teste', 'Emailteste@gmail.com', '$2y$10$/2EpZnfUv9llk812KPl33.y3Xme4PBhQQNQ2OL0IPqCvfFa4be/l6', '091.807.573', '2024-12-03', 'T.I', 5200.00, 'a professor.png', '2024-12-06 00:54:37'),
+(2, 'Teste Prof', 'profteste@gmail.com', '$2y$10$igZ4FGUir3fkRcrEldBuv.Lhm3nFZruNlcpEWGEN4ca9QRk6OXq66', '123.456.789', '2024-12-01', 'Adm', 5400.00, 'testeprof.png', '2024-12-06 00:59:32'),
+(3, 'Professorteste', 'proftest@gmail.com', '$2y$10$B9XCFh9VcJ/OMbDWci7DZeEiTkkR76Q6CzBQofGjFv0vT98OLHihu', '101.010.101', '2024-10-04', 'Estagiário', 1000.00, 'Teste.png', '2024-12-06 01:02:56');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(4) NOT NULL,
   `email` varchar(90) NOT NULL,
-  `senha` text NOT NULL,
+  `senha` varchar(20) NOT NULL,
   `nome` varchar(100) NOT NULL,
-  `cpf` char(11) NOT NULL,
+  `cpf` int(11) NOT NULL,
   `tipous` varchar(25) NOT NULL,
   `datanasc` date NOT NULL,
   `descricao` text NOT NULL,
   `nacionalidade` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `email`, `senha`, `nome`, `cpf`, `tipous`, `datanasc`, `descricao`, `nacionalidade`) VALUES
-(1, 'luis@teste.com', '$2y$10$EaA3kBpXqJIhrpqyCShWoukmZ2FMFhoh07JG/nr0.l7s1qb67Qdhu', 'luisotavio', '10.101.010-', 'aluno', '0000-00-00', '1000-10-10', 'Teste');
-
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendas`
+-- Estrutura para tabela `vendas`
 --
 
 CREATE TABLE `vendas` (
-  `id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `produto_id` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  `valor_total` decimal(10,2) NOT NULL,
+  `id` int(4) NOT NULL,
+  `usuario_id` int(4) NOT NULL,
+  `produto_id` int(4) NOT NULL,
+  `quantidade` int(3) NOT NULL,
+  `valor_total` float NOT NULL,
   `data_venda` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -134,14 +152,19 @@ CREATE TABLE `vendas` (
 --
 
 --
--- Índices para tabela `aulas`
+-- Índices de tabela `banners`
 --
-ALTER TABLE `aulas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `professor_codigo` (`professor_codigo`);
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `carrinho`
+-- Índices de tabela `candidatos`
+--
+ALTER TABLE `candidatos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id`),
@@ -149,27 +172,27 @@ ALTER TABLE `carrinho`
   ADD KEY `produto_id` (`produto_id`);
 
 --
--- Índices para tabela `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `professores`
+-- Índices de tabela `professores`
 --
 ALTER TABLE `professores`
-  ADD PRIMARY KEY (`codigo`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `vendas`
+-- Índices de tabela `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id`),
@@ -177,64 +200,64 @@ ALTER TABLE `vendas`
   ADD KEY `produto_id` (`produto_id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `aulas`
+-- AUTO_INCREMENT de tabela `banners`
 --
-ALTER TABLE `aulas`
+ALTER TABLE `banners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `candidatos`
+--
+ALTER TABLE `candidatos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `aulas`
---
-ALTER TABLE `aulas`
-  ADD CONSTRAINT `aulas_ibfk_1` FOREIGN KEY (`professor_codigo`) REFERENCES `professores` (`codigo`);
-
---
--- Limitadores para a tabela `carrinho`
+-- Restrições para tabelas `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `carrinho_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
 
 --
--- Limitadores para a tabela `vendas`
+-- Restrições para tabelas `vendas`
 --
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
