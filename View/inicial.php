@@ -336,8 +336,8 @@
                 <div class="col-md-2 mb-4 mb-md-0">
                     <h5 class="mb-3">Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Início</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Cursos</a></li>
+                        <li class="mb-2"><a href="inicial.php" class="text-white text-decoration-none">Início</a></li>
+                        <li class="mb-2"><a href="loja.php" class="text-white text-decoration-none">Cursos</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Planos</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
                     </ul>
@@ -348,7 +348,7 @@
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Central de Ajuda</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Política de Privacidade</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Termos de Uso</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trabalhe Conosco</a></li>
+                        <li class="mb-2"><a href="trabalheconosco.php" class="text-white text-decoration-none">Trabalhe Conosco</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
